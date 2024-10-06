@@ -34,11 +34,11 @@ def componentscards(request):
 def componentscarousel(request):
     return render(request, 'main/components-carousel.html')
 
-def componenntslistgroup(request):
+def componentslistgroup(request):
     return render(request, 'main/components-list-group.html')
 
 def componentsmodals(request):
-    return render(request, 'main/components-modals.html')
+    return render(request, 'main/components-modal.html')
 
 def componentspagination(request):
     return render(request, 'main/components-pagination.html')
