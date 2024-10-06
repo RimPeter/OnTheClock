@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block meta %}
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
+      <link rel="icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
+
+      {% comment %} SEO Meta Tags {% endcomment %}
+      <meta name="description" content="Eternal Glow offers cutting-edge dermatology treatments including anti-aging, laser therapy, injectables, and skin care solutions tailored to your needs.">
+      <meta name="keywords" content="dermatology, skin care, anti-aging, laser therapy, injectables, wellness, blood tests, sports rehab, wellness clinic">
+      <meta name="robots" content="index, follow">
+
+      {% comment %} Open Graph (OG) Tags (Used by Facebook, LinkedIn, etc.) {% endcomment %}
+      <meta property="og:title" content="Eternal Glow - Advanced Dermatology Treatments">
+      <meta property="og:description" content="Discover our range of dermatology treatments including anti-aging, laser therapy, and personalized skin care solutions.">
+      <meta property="og:image" content="https://eternal-glow-b087f9869b00.herokuapp.com/static/images/MAINLOGO_2.png">
+      <meta property="og:url" content="https://eternal-glow-b087f9869b00.herokuapp.com/">
+      <meta property="og:type" content="website">
+
+      {% comment %} Twitter Card Tags {% endcomment %}
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Eternal Glow - Advanced Dermatology Treatments">
+      <meta name="twitter:description" content="Explore our expert dermatology services, including anti-aging treatments, laser therapy, injectables, and personalized skin care.">
+      <meta name="twitter:image" content="https://eternal-glow-b087f9869b00.herokuapp.com/static/images/MAINLOGO_2.png">
+
+
+    {% endblock meta %}{% block extrameta %}{% endblock extrameta %}
+    
+    <title>{% block title %}Eternal Glow - Advanced Dermatology Treatments{% endblock %}</title>
+
+    {% block corecss %}
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"/>
+     
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css\style.css' %}" />
+    {% endblock corecss %}{% block extracss %}{% endblock extracss %}
+
+    {% block corejs %}
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://kit.fontawesome.com/89758f0781.js" crossorigin="anonymous"></script>
+      <script src="https://js.stripe.com/v3/"></script>
+    {% endblock corejs %}{% block extrajs %}{% endblock extrajs %}
+    
+  </head>
+  
+  <body class='body-max-length'>
+
+{% block page_header %}{% endblock page_header %}
+    <main>
+      {% block content %} 
+      {% endblock %}
+    </main>
+
+<!-- Footer -->
+ <br>
+ <div class="welcome_text">
+  <footer class="footer">
+  <p>&copy; 2024 ETERNAL GLOW. All Rights Reserved.</p>
+  <a href="https://www.facebook.com/profile.php?id=61566332712590" target="_blank" rel="author">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 30px; height: 30px;">
+  </a>
+</footer>
+ </div>
+
+<script>
+  {% comment %} fade out alerts after 6 seconds {% endcomment %}
+    document.addEventListener("DOMContentLoaded", function() {
+        var alerts = document.querySelectorAll('.container .alert');
+
+        alerts.forEach(function(alert) {
+            setTimeout(function() {
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";
+                // Remove the alert from the DOM after the transition
+                setTimeout(function() {
+                    alert.parentNode.removeChild(alert);
+                }, 500); // Match this timing with the CSS transition duration
+            }, 6000);
+        });
+    });
+</script>
+
+    {% block postloadjs %}{% endblock postloadjs %}
+  </body>
+</html>
