@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['https://ontheclock-2ae5912c194b.herokuapp.com/','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['ontheclock-adb65b3ea3a0.herokuapp.com','localhost','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
