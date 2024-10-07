@@ -4,8 +4,8 @@ from django.http import HttpResponse
 def main(request):
     return render(request, 'main/main.html')
 
-def chartapexcharts(request):
-    return render(request, 'main/charts-apexcharts.html')
+def chartapexchart(request):
+    return render(request, 'main/chart-apexchart.html')
 
 def chartschartjs(request):
     return render(request, 'main/charts-chartjs.html')
@@ -13,8 +13,8 @@ def chartschartjs(request):
 def chartsecharts(request):
     return render(request, 'main/charts-echarts.html')
 
-def componentsaccordions(request):
-    return render(request, 'main/components-accordions.html')
+def componentsaccordion(request):
+    return render(request, 'main/components-accordion.html')
 
 def componentsalerts(request):
     return render(request, 'main/components-alerts.html')
@@ -37,7 +37,7 @@ def componentscarousel(request):
 def componentslistgroup(request):
     return render(request, 'main/components-list-group.html')
 
-def componentsmodals(request):
+def componentsmodal(request):
     return render(request, 'main/components-modal.html')
 
 def componentspagination(request):

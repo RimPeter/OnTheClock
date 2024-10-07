@@ -3,10 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.main, name='main'),
-    path('chart-apexcharts/', views.chartapexcharts, name='chart-apexcharts'),
+    path('chart-apexchart/', views.chartapexchart, name='chart-apexchart'),
     path('charts-chartjs/', views.chartschartjs, name='charts-chartjs'),
     path('charts-echarts/', views.chartsecharts, name='charts-echarts'),
-    path('components-accordions/', views.componentsaccordions, name='components-accordions'),
+    path('components-accordion/', views.componentsaccordion, name='components-accordion'),
     path('components-alerts/', views.componentsalerts, name='components-alerts'),
     path('components-badges/', views.componentsbadges, name='components-badges'),
     path('components-breadcrumbs/', views.componentsbreadcrumbs, name='components-breadcrumbs'),
@@ -14,7 +14,7 @@ urlpatterns = [
     path('components-cards/', views.componentscards, name='components-cards'),
     path('components-carousel/', views.componentscarousel, name='components-carousel'),
     path('components-list-group/', views.componentslistgroup, name='components-list-group'),
-    path('components-modals/', views.componentsmodals, name='components-modals'),
+    path('components-modal/', views.componentsmodal, name='components-modal'),
     path('components-pagination/', views.componentspagination, name='components-pagination'),
     path('components-progress/', views.componentsprogress, name='components-progress'),
     path('components-spinners/', views.componentsspinners, name='components-spinners'),
