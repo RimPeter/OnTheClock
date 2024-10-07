@@ -1,3 +1,6 @@
 notes.txt
 venv05102024
 Niceadmin
+*.pyc
+__pycache__/
+.env
