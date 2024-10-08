@@ -31,7 +31,9 @@ urlpatterns = [
     path('pages-contact/', views.pagescontact, name='pages-contact'),
     path('pages-error-404/', views.pageserror404, name='pages-error-404'),
     path('pages-faq/', views.pagesfaq, name='pages-faq'),
-    path('pages-login/', views.pageslogin, name='pages-login'),
+    
+    path('pages-login/', views.CustomLoginView.as_view(), name='pages-login'),
+    
     path('pages-register/', views.pagesregister, name='pages-register'),
     path('tables-data/', views.tablesdata, name='tables-data'),
     path('tables-general/', views.tablesgeneral, name='tables-general'),

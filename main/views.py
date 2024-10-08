@@ -1,5 +1,8 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import RegisterForm
+from django.contrib.auth import views as auth_views
 
 def main(request):
     return render(request, 'main/main.html')
@@ -88,11 +91,32 @@ def pageserror404(request):
 def pagesfaq(request):
     return render(request, 'main/pages-faq.html')
 
-def pageslogin(request):
-    return render(request, 'main/pages-login.html')
+# def pageslogin(request):
+#     return render(request, 'main/pages-login.html')
+
+class CustomLoginView(auth_views.LoginView):
+    template_name = 'main/pages-login.html'
+
+    def form_valid(self, form):
+        remember_me = self.request.POST.get('remember', None)
+        if remember_me:
+            # Session expires when the browser closes
+            self.request.session.set_expiry(0)
+        else:
+            # Session expires in two weeks
+            self.request.session.set_expiry(1209600)
+        return super().form_valid(form)
 
 def pagesregister(request):
-    return render(request, 'main/pages-register.html')
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  
+            return redirect('main')  
+    else:
+        form = RegisterForm()
+    return render(request, 'main/pages-register.html', {'form': form})
 
 def tablesdata(request):
     return render(request, 'main/tables-data.html')
