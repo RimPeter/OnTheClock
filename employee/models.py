@@ -29,8 +29,17 @@ def validate_account_number(value):
     """
     if not value.isdigit() or len(value) != 8:
         raise ValidationError(_('Enter a valid 8-digit Bank Account Number.'))
+    
+def user_directory_path(instance, filename):
+    return f'profile_pictures/user_{instance.id}/{filename}'
 
 class Employee(models.Model):
+    JOB_TITLE_CHOICES = [
+        ('driver', 'Driver'),
+        ('instore', 'Instore'),
+        ('manager', 'Manager'),
+        ('shift-runner', 'Shift Runner'),
+    ]
     # Personal Information
     first_name = models.CharField(max_length=30, verbose_name=_('First Name'))
     middle_name = models.CharField(max_length=30, verbose_name=_('Middle Name'), blank=True, null=True)
@@ -55,6 +64,21 @@ class Employee(models.Model):
             )
         ],
         verbose_name=_('Postcode')
+    )
+    
+    profile_picture = models.ImageField(
+        upload_to=user_directory_path,
+        default='default_images/apple-touch-icon.png',
+        blank=True,
+        null=True,
+        verbose_name=_('Profile Picture')
+    )
+    
+    job_title = models.CharField(
+        max_length=20,
+        choices=JOB_TITLE_CHOICES,
+        default='instore',
+        verbose_name=_('Job Title')
     )
     
     # Contact Information
