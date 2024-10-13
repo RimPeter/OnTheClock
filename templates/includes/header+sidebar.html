@@ -21,8 +21,12 @@
 
         <li class="nav-item dropdown pe-3"> 
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            {% if user.employee.profile_picture %}
-              <img src="{{ user.employee.profile_picture.url }}" alt="Profile" class="rounded-circle">
+            {% if user.is_authenticated and user.employee %}
+              {% if user.employee.profile_picture %}
+                <img src="{{ user.employee.profile_picture.url }}" alt="Profile" class="rounded-circle">
+              {% else %}
+                <img src="{% static 'img/default-profile.png' %}" alt="Profile" class="rounded-circle">
+              {% endif %}
             {% else %}
               <img src="{% static 'img/default-profile.png' %}" alt="Profile" class="rounded-circle">
             {% endif %}
@@ -42,7 +46,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'employee:users-profile' %}">
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'employee:employee_profile' employee_id=user.employee.id %}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -52,7 +56,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url "users-profile" %}">
+              <a class="dropdown-item d-flex align-items-center" href="{% url "main:users-profile" %}">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinLengthValidator, MaxLengthValidator, EmailValidator, ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 def validate_nin(value):
     """
@@ -34,6 +35,7 @@ def user_directory_path(instance, filename):
     return f'profile_pictures/user_{instance.id}/{filename}'
 
 class Employee(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     JOB_TITLE_CHOICES = [
         ('driver', 'Driver'),
         ('instore', 'Instore'),
