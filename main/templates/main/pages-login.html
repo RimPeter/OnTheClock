@@ -15,7 +15,7 @@
             class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center"
           >
             <div class="d-flex justify-content-center py-4">
-              <a href="{% url 'main' %}" class="logo d-flex align-items-center w-auto">
+              <a href="{% url 'main:main' %}" class="logo d-flex align-items-center w-auto">
                 <img src="{% static 'img/logo.png' %}" alt="OnTheClock Logo" />
                 <span class="d-none d-lg-block">OnTheClock</span>
               </a>
@@ -103,7 +103,7 @@
                   <div class="col-12">
                     <p class="small mb-0">
                       Don't have an account?
-                      <a href="{% url 'pages-register' %}">Create an account</a>
+                      <a href="{% url 'main:pages-register' %}">Create an account</a>
                     </p>
                   </div>
                 </form>
