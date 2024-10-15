@@ -4,6 +4,8 @@ from django.contrib.auth import login
 from .forms import RegisterForm
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
+from employee.forms import EmployeeForm
+from employee.models import Employee
 
 @login_required
 def main(request):
@@ -126,5 +128,23 @@ def tablesdata(request):
 def tablesgeneral(request):
     return render(request, 'main/tables-general.html')
 
+@login_required
 def usersprofile(request):
-    return render(request, 'main/users-profile.html')
+    try:
+        employee = request.user.employee
+    except Employee.DoesNotExist:
+        return redirect('employee:create_profile')
+
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST, request.FILES, instance=employee)
+        if form.is_valid():
+            form.save()
+            return redirect('main:users-profile')
+    else:
+        form = EmployeeForm(instance=employee)
+
+    context = {
+        'employee': employee,
+        'form': form,
+    }
+    return render(request, 'main/users-profile.html', context)

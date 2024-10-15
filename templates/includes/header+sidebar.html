@@ -20,15 +20,21 @@
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown pe-3"> 
-<li class="nav-item dropdown pe-3"> 
-  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-    {% if user.is_authenticated and user.employee and user.employee.profile_picture %}
-      <img src="{{ user.employee.profile_picture.url }}" alt="Profile" class="rounded-circle">
-    {% else %}
-      <img src="{% static 'img/default-profile.png' %}" alt="Profile" class="rounded-circle">
-    {% endif %}
-    <span class="d-none d-md-block dropdown-toggle ps-2">{{ user.get_full_name }}</span>
-  </a>
+        <li class="nav-item dropdown pe-3"> 
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"     data-bs-toggle="dropdown">
+            {% if user.is_authenticated and user.employee and user.employee.profile_picture %}
+              <img src="{{ user.employee.profile_picture.url }}" alt="{{ user.get_full_name }}" class="rounded-circle">
+            {% else %}
+              <img src="{% static 'img/default-profile.png' %}" alt="Profile" class="rounded-circle">
+            {% endif %}
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+                {% if user.get_full_name %}
+                  {{ user.get_full_name }}
+                {% else %}
+                  {{ user.username }}
+                {% endif %}
+            </span>
+          </a>
 
           
           <!-- End Profile Image Icon -->
@@ -55,7 +61,22 @@
             <li>
               <hr class="dropdown-divider">
             </li>
+              {% if user.is_superuser %}
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="{% url 'admin:index' %}">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Admin Panel</span>
+                  </a>
+                </li>
 
+                <!-- Optional Divider -->
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+              {% endif %}
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{% url "main:users-profile" %}">
                 <i class="bi bi-gear"></i>
