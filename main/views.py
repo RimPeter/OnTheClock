@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .forms import RegisterForm
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def main(request):
     return render(request, 'main/main.html')
 

@@ -37,7 +37,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', 
+    'main.middleware.LoginRequiredMiddleware',   
 ]
 
 ROOT_URLCONF = 'EMPLOYEEAPP.urls'
@@ -116,9 +117,14 @@ LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'login'  
+LOGIN_URL = 'main:login'  
 LOGOUT_REDIRECT_URL = 'main:login'  
-LOGIN_REDIRECT_URL = 'main'
+LOGIN_REDIRECT_URL = 'main:main'
+LOGIN_EXEMPT_URLS = [
+    r'^login/$',
+    r'^pages-register/$',
+    r'^pages-error-404/$',
+]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
