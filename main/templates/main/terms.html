@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Terms and Conditions{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Terms and Conditions</h1>
+    <p>
+        Welcome to our company job application platform. Before signing up as an employee, please carefully read and
+        understand the following terms and conditions.
+    </p>
+
+    <h3>1. General Provisions</h3>
+    <p>
+        By signing up and using this platform, you agree to comply with all the terms and conditions stated below. These
+        terms govern your use of the platform and form a legally binding agreement between you and the company.
+    </p>
+
+    <h3>2. Employee Responsibilities</h3>
+    <p>
+        Employees are responsible for providing accurate and up-to-date information during the sign-up process. Any
+        falsified data may lead to the termination of your employment or access to the platform.
+    </p>
+
+    <h3>3. Data Privacy</h3>
+    <p>
+        Your personal data will be collected and processed in accordance with our privacy policy. The company is committed
+        to protecting your privacy and will not share your information with unauthorized third parties.
+    </p>
+
+    <h3>4. Use of the Platform</h3>
+    <p>
+        The platform is designed to facilitate job applications, employment status tracking, and communication between
+        employees and the company. Any misuse of the platform for unauthorized purposes is strictly prohibited.
+    </p>
+
+    <h3>5. Changes to Terms</h3>
+    <p>
+        The company reserves the right to update these terms and conditions at any time. Changes will be communicated to
+        you through the platform or via email. Continued use of the platform after changes have been made signifies your
+        acceptance of the revised terms.
+    </p>
+
+    <h3>6. Termination of Access</h3>
+    <p>
+        The company may suspend or terminate your access to the platform at any time, with or without notice, if you are
+        found to be in violation of these terms.
+    </p>
+
+    <p>
+        To register as an employee, please proceed to the
+        <a href="{% url 'main:pages-register' %}">registration page</a>.
+    </p>
+</div>
+{% endblock content %}

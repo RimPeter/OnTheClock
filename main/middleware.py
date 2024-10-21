@@ -1,3 +1,4 @@
+# main/middleware.py
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.conf import settings
@@ -12,6 +13,11 @@ class LoginRequiredMiddleware:
 
     def __call__(self, request):
         path = request.path_info.lstrip('/')
+
+        # Skip processing for static and media files
+        if (request.path.startswith(settings.STATIC_URL) or
+            request.path.startswith(settings.MEDIA_URL)):
+            return self.get_response(request)
 
         if not request.user.is_authenticated:
             if not any(m.match(path) for m in self.exempt_urls):
